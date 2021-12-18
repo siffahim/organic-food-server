@@ -79,17 +79,18 @@ async function run() {
         })
 
 
-        app.get('/orders', verifyToken, async (req, res) => {
+        app.get('/orders', async (req, res) => {
             const email = req.query.email;
-            if (req.decodedUserEmail === email) {
-                const query = { email: email };
-                const cursor = orderCollection.find(query);
-                const result = await cursor.toArray();
-                res.json(result)
-            }
-            else {
-                res.status(401).json({ message: 'User not authorized' })
-            }
+            const query = { email: email };
+            const cursor = orderCollection.find(query);
+            const result = await cursor.toArray();
+            res.json(result)
+            // if (req.decodedUserEmail === email) {
+
+            // }
+            // else {
+            //     res.status(401).json({ message: 'User not authorized' })
+            // }
         })
 
         app.get('/orders/:id', async (req, res) => {
