@@ -3,6 +3,7 @@ const { MongoClient } = require('mongodb')
 const ObjectId = require('mongodb').ObjectId;
 const app = express();
 const port = process.env.PORT || 5000;
+const hostname = "0.0.0.0"
 const cors = require('cors');
 const admin = require("firebase-admin");
 const stripe = require('stripe')('sk_test_51JwnGrLiLwVG3jO0cewKLOH7opNVle1UFZap9o05XufrjqX5BkOgl5kZrl8YEepiB5IbPF0JSObI8gPt7FCwKRf200aJzI14tq');
@@ -145,9 +146,9 @@ async function run() {
 run().catch(console.dir)
 
 app.get('/', (req, res) => {
-    res.send('I m education server')
+    res.send('Organic Food Server')
 })
 
 app.listen(port, () => {
-    console.log('Running education server', port)
+    console.log(`Running ${hostname} at ${port}`)
 })
