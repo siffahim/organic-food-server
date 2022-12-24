@@ -145,7 +145,7 @@ async function run() {
 run().catch(console.dir)
 
 app.get('/', (req, res) => {
-    res.send('Organic Food Server')
+    res.send('organic food server')
 })
 
 app.listen(port, () => {
