@@ -48,7 +48,7 @@ async function run() {
         const courseCollection = database.collection('foods');
         const orderCollection = database.collection('orders');
 
-        app.get('/courses', async (req, res) => {
+        app.get('/products', async (req, res) => {
             const page = req.query.page;
             const size = parseInt(req.query.size);
             const cursor = courseCollection.find();
@@ -63,7 +63,7 @@ async function run() {
             res.json({ count, result })
         })
 
-        app.get('/courses/:id', async (req, res) => {
+        app.get('/products/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: ObjectId(id) };
             const result = await courseCollection.findOne(filter);
